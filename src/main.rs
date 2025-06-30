@@ -1,3 +1,5 @@
+use gframe::run;
+
 fn main() {
-    println!("Hello, world!");
+    run().unwrap();
 }
