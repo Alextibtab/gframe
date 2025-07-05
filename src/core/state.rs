@@ -14,7 +14,6 @@ pub struct State {
     render_pipeline: wgpu::RenderPipeline,
     vertex_buffer: wgpu::Buffer,
     index_buffer: wgpu::Buffer,
-    num_vertices: u32,
     num_indices: u32,
     pub window: Arc<Window>,
 }
@@ -22,7 +21,6 @@ pub struct State {
 impl State {
     pub async fn new(window: Arc<Window>) -> anyhow::Result<Self> {
         let size = window.inner_size();
-        let num_vertices = VERTICES.len() as u32;
 
         let instance = wgpu::Instance::new(&wgpu::InstanceDescriptor {
             #[cfg(not(target_arch = "wasm32"))]
@@ -149,7 +147,6 @@ impl State {
             render_pipeline,
             vertex_buffer,
             index_buffer,
-            num_vertices,
             num_indices,
             window,
         })
